@@ -1,0 +1,6 @@
+<h2>Welcome <%= @user.name %>.</h2>
+<h3>Please add your address.</h3>
+
+<%= display_errors %>
+
+<%= render :partial => 'form', :locals => {:user => @user, :address => @address} %>

@@ -1,0 +1,13 @@
+<h1><%= @user.name %></h1>
+<h2><%= @user.email %></h2>
+<p><%= link_to "Edit Your Details", edit_user_path(@user) %></p>
+<% @user.address.each do |address| %>
+  <h1><%= address.line_1 %></h1>
+  <p><%= address.line_2 %></p>
+  <p><%= address.city %></p>
+  <p><%= address.postcode %></p>
+  <p><%= address.country %></p>
+  <%= link_to "Edit Address", edit_user_address_path(@user, address)%>
+  <% end %>
+
+<%= add_address_button(@user) %>
