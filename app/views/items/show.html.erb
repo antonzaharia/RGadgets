@@ -1,0 +1,9 @@
+<h1><%= @item.title %></h1>
+<p><%= @item.image %></p>
+<p><%= @item.description %></p>
+<p>$ <%= @item.price %></p>
+<p>Category: <%= link_to @item.category.name, category_path(@item.category) %></p>
+
+
+
+<%= link_to "Edit Item", edit_item_path(@item) %>

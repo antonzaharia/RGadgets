@@ -1,0 +1,19 @@
+<%= display_errors %>
+
+<%= f.label :title %>
+<%= f.text_field :title %><br>
+
+<%= f.label :image %>
+<%= f.text_field :image %><br>
+
+<%= f.label :description %>
+<%= f.text_field :description %><br>
+
+<%= f.label :price %>
+<%= f.text_field :price %><br>
+
+<%= f.label :category %>
+<%= f.collection_select :category_id, Category.all, :id, :name, {:prompt => "Select Category or create one"} %>
+<%= f.text_field :category , value: "" %><br>
+
+<%= f.submit %>

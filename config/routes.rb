@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :colors
-  resources :models
   resources :categories
-  resources :items
+  resources :items do
+    resources :colors, :models, only: [:new, :create, :destroy]
+  end
+
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :users do
     resources :addresses

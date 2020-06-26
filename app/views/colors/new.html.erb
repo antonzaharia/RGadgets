@@ -1,0 +1,10 @@
+  <% @item.colors.each do |color| %>
+    <p><%= color.name %> <%= link_to "X", item_color_path(@item, color), method: :delete if color.valid?%></p>
+  <% end %>
+
+<%= display_errors %>
+<%= form_for ([@item, @color]) do |f| %>
+<%= f.text_field :name, :placeholder => "Enter color" %>
+<%= f.submit "Add color" %>
+<% end %>
+<%= link_to "Finish", item_path(@item) %>

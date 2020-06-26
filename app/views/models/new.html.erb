@@ -1,0 +1,12 @@
+
+  <% @item.models.each do |model| %>
+    <p><%= model.name %> <%= link_to "X", item_model_path(@item, model), method: :delete if model.valid?%></p>
+  <% end %>
+
+
+<%= display_errors %>
+<%= form_for ([@item, @model]) do |f| %>
+<%= f.text_field :name, :placeholder => "Enter model" %>
+<%= f.submit "Add model" %>
+<% end %>
+<%= link_to "Continue to colors", new_item_color_path(@item) %>

@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_182506) do
 
   create_table "colors", force: :cascade do |t|
     t.string "name"
+    t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,14 +42,13 @@ ActiveRecord::Schema.define(version: 2020_06_25_182506) do
     t.string "description"
     t.string "price"
     t.integer "category_id"
-    t.integer "model_id"
-    t.integer "color_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "models", force: :cascade do |t|
     t.string "name"
+    t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
