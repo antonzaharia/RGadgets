@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
+    before_action :current_user
     def new
-        @user = User.find(params[:user_id])
+        @user = User.find(current_user)
         @address = @user.address.build
         
     end
@@ -18,13 +19,13 @@ class AddressesController < ApplicationController
 
     def edit
         @user = User.find(current_user)
-        @address = Address.find(params[:id])
+        @address = Address.find_by(user_id: @user.id)
     end
 
     def update
         
-        @address = Address.find(params[:id])
-        @user = @address.user
+        @user = User.find(current_user)
+        @address = @user.address
         if @address.update(address_params)
             redirect_to user_path(@user)
         else

@@ -2,8 +2,17 @@
 <p><%= @item.image %></p>
 <p><%= @item.description %></p>
 <p>$ <%= @item.price %></p>
+
+<%= form_for([@cart, @cart_item]) do |f| %>
+<%= f.collection_select :model_id, Model.all, :id, :name %>
+<%= f.collection_select :color_id, Color.all, :id, :name %><br>
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.label :quantity %>
+<%= f.number_field :quantity, value: 1 %>
+<%= f.submit "Add to cart" %>
+<% end %>
+
 <p>Category: <%= link_to @item.category.name, category_path(@item.category) %></p>
 
+<%= edit_button %>
 
-
-<%= link_to "Edit Item", edit_item_path(@item) %>

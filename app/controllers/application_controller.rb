@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
         session[:user_id]
     end
 
+    def is_admin?
+        if User.find(current_user).admin != 1
+            redirect_to root_path
+        end
+    end
+
+    def current_cart
+        Cart.find_by(id: session[:cart_id])
+    end
+
     def logged_in?
         !!current_user
     end
@@ -15,6 +25,19 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def find_last_cart(user)
+        if user.carts.empty?
+            cart = user.carts.build
+            cart.save
+            cart.id
+        else
+            user.carts.last.id
+        end
+    end
+
+    def set_flash_errors
+        flash[:errors] = @user.errors.full_messages
+    end
 
 
 

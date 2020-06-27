@@ -1,5 +1,11 @@
 class ItemsController < ApplicationController
     include ItemsHelper
+    before_action :is_admin?
+    skip_before_action :is_admin?, only: [:index, :show]
+
+    def index
+        @items = Item.all
+    end
     
     def new
         @item = Item.new
@@ -24,7 +30,7 @@ class ItemsController < ApplicationController
         @item = Item.find_by(id: params[:id])
         @item.category = find_category
         if @item.update(item_params)
-            redirect_to item_path(@item)
+            redirect_to new_item_model_path(@item)
         else
             flash[:errors] = @item.errors.full_messages
             redirect_to edit_item_path(@item)
@@ -33,6 +39,8 @@ class ItemsController < ApplicationController
 
     def show
         @item = Item.find(params[:id])
+        @cart = current_cart
+        @cart_item = @item.cart_items.build
     end
 
     def item_params

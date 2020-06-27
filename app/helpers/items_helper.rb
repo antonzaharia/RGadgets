@@ -23,4 +23,11 @@ module ItemsHelper
         end
     end
 
+    def edit_button
+        if User.find(current_user).admin == 1
+            link_to "Edit Item", edit_item_path(@item)
+        end
+    end
+
+
 end

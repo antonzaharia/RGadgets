@@ -1,0 +1,9 @@
+<% @cart_items.each do |cart_item| %>
+<p><%= cart_item.item.title %>
+   x <%= cart_item.quantity %>
+   <%= link_to "remove from cart", cart_cart_item_path(cart_item.cart, cart_item), method: :delete %></p>
+<% end %>
+
+<%= button_to "Checkout", cart_path , method: :patch %>
+
+<p> Total: $<%= @cart.total %></p>

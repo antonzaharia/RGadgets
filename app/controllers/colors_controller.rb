@@ -1,4 +1,6 @@
 class ColorsController < ApplicationController
+    before_action :is_admin?
+    skip_before_action :is_admin?, only: [:index, :show]
 
     def new
         @item = Item.find_by(id: params[:item_id]) 

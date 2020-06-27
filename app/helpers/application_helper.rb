@@ -23,4 +23,24 @@ module ApplicationHelper
         end
     end
 
+    def set_cart
+        user = User.find(current_user)
+            if carts = Cart.where(user_id: user.id) # Find all carts
+                if carts.last.status == "completed" # Check if completed
+                   @cart = user.carts.build # Make new cart
+                else
+                    @cart = carts.last
+                end
+            else
+                @cart = user.carts.build # Make new cart
+            end
+    end
+
+    def cart_show
+        if logged_in?
+            set_cart
+            link_to "Your cart has #{@cart.cart_items.size} items", cart_path(@cart)
+        end
+    end
+
 end

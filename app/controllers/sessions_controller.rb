@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(signin_params[:password])
       session[:user_id] = @user.id
+      session[:cart_id] = find_last_cart(@user)
       redirect_to user_path(@user)
     else
       flash[:errors] = ["Please check your credentials and try again"]
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
+    session.delete :cart_id
     redirect_to root_path
   end
 
