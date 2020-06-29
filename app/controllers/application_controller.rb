@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
         session[:user_id]
     end
 
+    def user_authorized?
+
+    end
+
     def is_admin?
         if User.find(current_user).admin != 1
             redirect_to root_path
@@ -37,6 +41,10 @@ class ApplicationController < ActionController::Base
 
     def set_flash_errors
         flash[:errors] = @user.errors.full_messages
+    end
+
+    def set_current_user
+        @user = User.find(current_user)
     end
 
 

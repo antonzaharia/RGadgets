@@ -1,0 +1,7 @@
+<p>Total orders: <%= @carts.size %></p><br>
+
+<% @carts.each do |cart| %>
+<p><%= link_to "See order", cart_path(cart) %> - <%= cart.total %> - <%= cart.user.name %> - <%= cart.status_show %> - <%= cart.date %></p>
+
+<% end %>
+

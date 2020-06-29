@@ -1,18 +1,27 @@
 class CartsController < ApplicationController
-
+    before_action :set_current_user
 
     def show
-        @cart = current_cart
-        @cart_items = CartItem.where(cart_id: session[:cart_id]).all
+        @cart = Cart.find(params[:id])
+        @cart_items = CartItem.where(cart_id: @cart.id).all
     end
 
     def update
-        @user = User.find(current_user)
-        current_cart.status = "completed"
+        current_cart.update(status: "checked out")
         new_cart = @user.carts.build
         new_cart.save
         session[:cart_id] = new_cart.id
         redirect_to user_path(@user)
+    end
+
+    def index
+        @carts = @user.user_carts
+    end
+
+    def completed
+        @cart = Cart.find(params[:cart_id])
+        @cart.update(status: "completed")
+        redirect_to user_carts_path(current_user)
     end
 
 end

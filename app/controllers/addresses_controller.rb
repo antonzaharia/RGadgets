@@ -1,13 +1,12 @@
 class AddressesController < ApplicationController
-    before_action :current_user
+    before_action :set_current_user
+    
+
     def new
-        @user = User.find(current_user)
         @address = @user.address.build
-        
     end
 
     def create
-        @user = User.find(current_user)
         @address = @user.address.build(address_params)
         if @address.save
             redirect_to user_path(@user)
@@ -18,14 +17,11 @@ class AddressesController < ApplicationController
     end
 
     def edit
-        @user = User.find(current_user)
         @address = Address.find_by(user_id: @user.id)
     end
 
     def update
-        
-        @user = User.find(current_user)
-        @address = @user.address
+        @address = @user.address.find_by(id: params[:id])
         if @address.update(address_params)
             redirect_to user_path(@user)
         else
@@ -33,8 +29,6 @@ class AddressesController < ApplicationController
             redirect_to edit_user_address_path(@user, @address)
         end
     end
-
-
 
     private
     def address_params

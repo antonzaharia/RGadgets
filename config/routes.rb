@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
   
-  
-  resources :carts do 
-    resources :cart_items
+  resources :carts, only: [:show, :update] do
+    patch '/completed', to: 'carts#completed'
+    resources :cart_items, only: [:create, :destroy]
   end
-  
+
   resources :categories
   resources :items do
     resources :colors, :models, only: [:new, :create, :destroy]
   end
 
-
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users do
+  resources :users, only: [:show, :new, :create, :edit, :update] do
     resources :addresses
+    resources :carts, only: [:index]
   end
   root 'statics#home'
   post '/logout', to: 'sessions#destroy'
-  patch '/checkout', to: 'carts#checkout'
+  
 end

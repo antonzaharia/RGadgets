@@ -10,4 +10,19 @@ class Cart < ApplicationRecord
         end
         total_price
     end
+
+    def status_show
+        if status == nil
+            status = "pending"
+        else
+            self.status
+        end
+        
+    end
+
+    def date
+        updated_at.strftime("%d %b %y")
+    end
+
+    
 end
