@@ -1,12 +1,18 @@
-
+<div class="card  card-height" style="width: 100%;">
+  <div class="card-header">
+    Add one or more models of the item
+  </div>
+  <ul class="list-group list-group-flush">
   <% @item.models.each do |model| %>
-    <p><%= model.name %> <%= link_to "X", item_model_path(@item, model), method: :delete if model.valid?%></p>
+    <li class="list-group-item"><%= model.name %> <%= model_delete_button(model, @item) %></li>
   <% end %>
-
+  </ul>
+</div>
 
 <%= display_errors %>
+
 <%= form_for ([@item, @model]) do |f| %>
-<%= f.text_field :name, :placeholder => "Enter model" %>
-<%= f.submit "Add model" %>
+<%= f.text_field :name, :placeholder => "Enter model", :class => "form-control" %>
+<%= f.submit "Add model", :class => "btn btn-primary" %>
 <% end %>
-<%= link_to "Continue to colors", new_item_color_path(@item) %>
+<%= link_to "Continue to colors", new_item_color_path(@item), :class => "btn btn-success float-right" %>

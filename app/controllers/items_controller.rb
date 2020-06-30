@@ -1,10 +1,17 @@
 class ItemsController < ApplicationController
     include ItemsHelper
-    before_action :is_admin?
+    before_action :is_admin?, :user_authorized?
     skip_before_action :is_admin?, only: [:index, :show]
+    skip_before_action :user_authorized?, only: [:index]
 
     def index
-        @items = Item.all
+        flash[:notice] = nil
+        if params[:search]
+            @items = Item.where('title LIKE ?', "%#{params[:search]}%")
+            flash[:notice] = "No Results" if @items.size == 0
+          else
+            @items = Item.all
+        end
     end
     
     def new
@@ -43,7 +50,11 @@ class ItemsController < ApplicationController
         @cart_item = @item.cart_items.build
     end
 
+    private
+
     def item_params
         params.require(:item).permit(:title, :image, :description, :price)
     end
+
+
 end

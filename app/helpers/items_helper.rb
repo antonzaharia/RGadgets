@@ -25,7 +25,7 @@ module ItemsHelper
 
     def edit_button
         if User.find(current_user).admin == 1
-            link_to "Edit Item", edit_item_path(@item)
+            link_to "Edit Item", edit_item_path(@item), :class => "btn btn-primary float-right"
         end
     end
 

@@ -1,14 +1,21 @@
 <%= display_errors %>
 
 <%= form_for @user do |f| %>
+
 <%= f.label :name %>
-<%= f.text_field :name %> <br>
+<small id="emailHelp" class="form-text text-muted">Your name is needed for your receipts.</small>
+<%= f.text_field :name, :class => "form-control" %> <br>
 
 <%= f.label :email %>
-<%= f.email_field :email %><br> 
+<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<%= f.email_field :email, :class => "form-control" %><br> 
+
 
 <%= f.label :password %>
-<%= f.password_field :password %><br>
+<small id="emailHelp" class="form-text text-muted">Choose strong password.</small>
+<%= f.password_field :password, :class => "form-control" %><br>
 
-<%= f.submit %>
+<%= f.submit "Signup", :class => "btn btn-primary float_right" %>
  <% end %>
+
+ <%= link_to "Signup via Github", "/auth/github" %>

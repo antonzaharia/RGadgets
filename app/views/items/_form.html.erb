@@ -1,19 +1,24 @@
 <%= display_errors %>
 
 <%= f.label :title %>
-<%= f.text_field :title %><br>
+<%= f.text_field :title, :class => "form-control"  %><br>
 
 <%= f.label :image %>
-<%= f.text_field :image %><br>
+<%= f.text_field :image, :class => "form-control"  %><br>
 
 <%= f.label :description %>
-<%= f.text_field :description %><br>
+<%= f.text_field :description, :class => "form-control"  %><br>
 
 <%= f.label :price %>
-<%= f.text_field :price %><br>
+<%= f.text_field :price, :class => "form-control"  %><br>
 
-<%= f.label :category %>
-<%= f.collection_select :category_id, Category.all, :id, :name, {:prompt => "Select Category or create one"} %>
-<%= f.text_field :category , value: "" %><br>
+<div class="row">
+  <div class="col">
+    <%= f.collection_select :category_id, Category.all, :id, :name, {:prompt => "Select Category or create one"}, :class => "form-control"  %>
+  </div>
+  <div class="col">
+    <%= f.text_field :category , value: "", :placeholder => "Create a category", :class => "form-control" %><br>
+  </div>
+</div>
 
-<%= f.submit %>
+<%= f.submit :class => "btn btn-primary float_right" %>

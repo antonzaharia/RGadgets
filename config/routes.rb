@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   
   resources :carts, only: [:show, :update] do
     patch '/completed', to: 'carts#completed'

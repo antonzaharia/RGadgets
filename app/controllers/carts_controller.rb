@@ -15,7 +15,7 @@ class CartsController < ApplicationController
     end
 
     def index
-        @carts = @user.user_carts
+        @carts = @user.user_carts 
     end
 
     def completed

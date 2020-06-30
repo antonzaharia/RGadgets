@@ -10,7 +10,18 @@ class User < ApplicationRecord
         if admin == 1
             carts = Cart.where(status: "checked out") + Cart.where(status: "completed")
         else
-            Cart.where(user_id: self.id)
+            Cart.where(user_id: self.id).order(created_at: :desc)
         end
     end
+
+    def self.create_with_omniauth(auth)
+        create! do |user|
+          user.uid = auth['uid']
+          if auth['info']
+             user.name = auth['info']['name'] || "No Name on GitHub"
+             user.email = auth['info']['email'] || "Add your email here."
+             user.password = auth['info']['email'] || "BasicPassword"
+          end
+        end
+      end
 end

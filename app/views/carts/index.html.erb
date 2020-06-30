@@ -1,7 +1,26 @@
-<p>Total orders: <%= @carts.size %></p><br>
+<br><br>
+<p class="center">Total orders: <%= @carts.size %></p><br>
 
-<% @carts.each do |cart| %>
-<p><%= link_to "See order", cart_path(cart) %> - <%= cart.total %> - <%= cart.user.name %> - <%= cart.status_show %> - <%= cart.date %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">link</th>
+      <th scope="col">Total</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+    <% @carts.each do |cart| %>
+      <th scope="row"><%= link_to "See order", cart_path(cart) %></th>
+      <td><%= cart.total %></td>
+      <td><%= cart.user.name %></td>
+      <td><%= cart.status_show %></td>
+      <td><%= cart.date %></td>
+    </tr>
+
 
 <% end %>
 

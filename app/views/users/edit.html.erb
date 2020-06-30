@@ -3,10 +3,10 @@
 <%= form_for @user, url: user_path(@user), method: :patch do |f| %>
 
 <%= f.label :name %>
-<%= f.text_field :name %> <br>
+<%= f.text_field :name, :class => "form-control" %> <br>
 
 <%= f.label :email %>
-<%= f.email_field :email %><br> 
+<%= f.email_field :email, :class => "form-control"  %><br> 
 
-<%= f.submit %>
+<%= f.submit "Save Details", :class => "btn btn-primary float_right" %>
  <% end %>

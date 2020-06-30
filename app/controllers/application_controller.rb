@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
     end
 
     def user_authorized?
-
+        if !logged_in?
+            flash[:notice] = "You have to be logged in to continue."
+            redirect_to new_session_path
+        end
     end
 
     def is_admin?

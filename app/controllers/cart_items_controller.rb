@@ -3,10 +3,12 @@ class CartItemsController < ApplicationController
 
     def create
         @cart.cart_items.build(cart_item_params)
+        @item = Item.find_by(id: cart_item_params[:item_id])
         if @cart.save
-            redirect_to cart_path(@cart)
+            redirect_to item_path(@item)
         else
-            redirect_to root_path
+            flash[:notice] = "Model and Color must be selected"
+            redirect_to item_path(@item)
         end
     end
 

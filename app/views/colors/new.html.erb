@@ -1,10 +1,18 @@
-  <% @item.colors.each do |color| %>
-    <p><%= color.name %> <%= link_to "X", item_color_path(@item, color), method: :delete if color.valid?%></p>
-  <% end %>
+<div class="card  card-height" style="width: 100%;">
+  <div class="card-header">
+    Add one or more colors of the item
+  </div>
+  <ul class="list-group list-group-flush">
+<% @item.colors.each do |color| %>
+    <li class="list-group-item"><%= color.name %> <%= color_delete_button(color, @item)%></li>
+<% end %>
+  </ul>
+</div>
 
 <%= display_errors %>
+
 <%= form_for ([@item, @color]) do |f| %>
-<%= f.text_field :name, :placeholder => "Enter color" %>
-<%= f.submit "Add color" %>
+<%= f.text_field :name, :placeholder => "Enter color", :class => "form-control"  %>
+<%= f.submit "Add color", :class => "btn btn-primary" %>
 <% end %>
-<%= link_to "Finish", item_path(@item) %>
+<%= link_to "Finish", item_path(@item), :class => "btn btn-success float-right" %>

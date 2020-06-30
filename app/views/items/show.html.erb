@@ -1,18 +1,27 @@
-<h1><%= @item.title %></h1>
-<p><%= @item.image %></p>
-<p><%= @item.description %></p>
-<p>$ <%= @item.price %></p>
-
-<%= form_for([@cart, @cart_item]) do |f| %>
-<%= f.collection_select :model_id, Model.all, :id, :name %>
-<%= f.collection_select :color_id, Color.all, :id, :name %><br>
-<%= f.hidden_field :item_id, value: @item.id %>
-<%= f.label :quantity %>
-<%= f.number_field :quantity, value: 1 %>
-<%= f.submit "Add to cart" %>
-<% end %>
-
-<p>Category: <%= link_to @item.category.name, category_path(@item.category) %></p>
-
 <%= edit_button %>
+
+<%= display_notice %>
+
+<h1><%= @item.title %></h1>
+<div class="card card-height" style="width: 50%;">
+<%= image_tag (@item.image) %>
+</div>
+
+<div class="card" style="width: 50%;">
+<%= form_for([@cart, @cart_item]) do |f| %>
+<%= f.collection_select :model_id, @item.models, :id, :name, {:prompt=>"Select Model"}, { :class => "custom-select my-1 mr-sm-2" } %>
+<%= f.collection_select :color_id, @item.colors, :id, :name, {:prompt=> "Select Color"}, { :class => "custom-select my-1 mr-sm-2" } %><br>
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.label :quantity, :class => "input-width" %>
+<%= f.number_field :quantity, value: 1, :class => "form-control input-width float-right" %> <br><br><br><br>
+<h2><span class="badge badge-secondary ">$ <%= @item.price %> </span></h2>
+<%= f.submit "Add to cart", :class => "btn btn-primary float-right" %>
+<% end %>
+</div>
+
+<p class="center"> Category: <%= link_to @item.category.name, category_path(@item.category), :class => "badge badge-info" %></p>
+
+<div class="card card-height" style="width: 100%;">
+<p><%= @item.description %></p>
+</div>
 

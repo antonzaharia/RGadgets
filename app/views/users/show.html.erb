@@ -4,9 +4,9 @@
     <h2 class="card-text">Name: <%= @user.name %></h2>
     <h2 class="card-text">Email: <%= @user.email %></h2>
     <p><%= link_to "Edit Your Details", edit_user_path(@user), :class => "btn btn-primary" %></p>
+    <p><%= order_history_button %></p>
   </div>
 </div>
-
 
 
 <div class="card">
