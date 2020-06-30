@@ -1,0 +1,10 @@
+<%= form_tag items_path, method: :get do %>
+  <%= link_to "Categories", categories_path, :class => "btn btn-primary col-auto"  %>
+    <div class="form-row align-items-left float_right">
+      <div class="col-auto">
+        <%= text_field_tag :search, params[:search], :class => "form-control" %>
+      </div>
+        <%= submit_tag 'Search', :class => "btn btn-primary col-auto" %>
+    </div>
+  </div>
+<% end %>

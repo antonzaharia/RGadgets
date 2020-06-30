@@ -50,6 +50,12 @@ class ItemsController < ApplicationController
         @cart_item = @item.cart_items.build
     end
 
+    def destroy
+        @item = Item.find(params[:id])
+        @item.delete
+        redirect_to items_path
+    end
+
     private
 
     def item_params

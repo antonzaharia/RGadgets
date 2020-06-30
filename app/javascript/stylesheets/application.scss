@@ -94,3 +94,6 @@ caption {
 .disabled {
         pointer-events: none;
 }
+.fields_with_errors input[type="text"] {
+        border: 1px solid red;
+}

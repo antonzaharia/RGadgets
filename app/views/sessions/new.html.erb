@@ -1,7 +1,6 @@
 
 <%= display_errors %>
 <%= display_notice %>
-
   <%= form_for(@user, url: sessions_path) do |f| %>
 
 <div class="form-group">
@@ -21,5 +20,9 @@
   <div class="mx-auto" style="width: 300px;" >
     <p>Don't have an account yet? <%= link_to "Signup", new_user_path, :class => "btn btn-light" %></p>
   </div>
-   <%= link_to "Signup via GitHub", "/auth/github" %>
 </div>
+    <p class="center">or</p>
+    <p class="center"><%= link_to "Signup via GitHub", "/auth/github", :class => "center" %></p>
+  
+   
+

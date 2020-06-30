@@ -1,3 +1,10 @@
-<% @categories.each do |cat| %>
-<p><%= link_to cat.name, category_path(cat) %></p>
-<% end %>
+<div class="card card-height" style="width: 100%;">
+  <div class="card-header">
+    All Categories
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @categories.each do |cat| %>
+      <li class="list-group-item"><%= link_to cat.name, category_path(cat) %></li>
+    <% end %>
+  </ul>
+</div>

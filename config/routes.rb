@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new, :create, :edit, :update] do
-    resources :addresses
+    resources :addresses, only: [:show, :new, :create, :edit, :update]
     resources :carts, only: [:index]
   end
   root 'statics#home'

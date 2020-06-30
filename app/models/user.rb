@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     def user_carts
         if admin == 1
-            carts = Cart.where(status: "checked out") + Cart.where(status: "completed")
+            carts = Cart.checked_out + Cart.completed
         else
             Cart.where(user_id: self.id).order(created_at: :desc)
         end
@@ -23,5 +23,7 @@ class User < ApplicationRecord
              user.password = auth['info']['email'] || "BasicPassword"
           end
         end
-      end
+    end
+
+
 end

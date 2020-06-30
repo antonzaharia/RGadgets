@@ -1,4 +1,7 @@
 class Cart < ApplicationRecord
+    scope :pending, -> { where status: 'pending' }
+    scope :completed, -> { where status: 'completed' }
+    scope :checked_out, -> { where status: 'checked out' }
     belongs_to :user
     has_many :cart_items
     has_many :items, through: :cart_items

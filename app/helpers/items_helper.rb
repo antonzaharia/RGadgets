@@ -29,5 +29,10 @@ module ItemsHelper
         end
     end
 
+    def delete_button
+        if User.find(current_user).admin == 1
+            link_to "Delete Item", item_path(@item), method: :delete, :class => "btn btn-primary float-right"
+        end
+    end
 
 end

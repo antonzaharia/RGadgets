@@ -1,8 +1,1 @@
-<% @items.each do |item| %>
-  <div class="card text-center" style="width: 18rem;">
-    <%= link_to image_tag(item.image), item_path(item), :class => "card-img-top" %>
-    <div class="card-body">
-      <p><%= link_to item.title, item_path(item), :class => "btn btn-link"  %>
-    </div>
-  </div>
-<% end %>
+<%= render :partial => "/items/show_items", :locals => { :items => @items } %>

@@ -2,9 +2,11 @@
   <h5 class="card-header">Your Details</h5>
     <div class="card-body">
     <h2 class="card-text">Name: <%= @user.name %></h2>
+    <span class="badge badge-secondary"><%= via_github(@user) %></span>
     <h2 class="card-text">Email: <%= @user.email %></h2>
     <p><%= link_to "Edit Your Details", edit_user_path(@user), :class => "btn btn-primary" %></p>
     <p><%= order_history_button %></p>
+    <p><%= new_item_button(@user) %></p>
   </div>
 </div>
 

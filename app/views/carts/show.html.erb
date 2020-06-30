@@ -2,13 +2,14 @@
   <div class="card-header">
     Total: $<%= @cart.total %>
   </div>
+
   <ul class="list-group list-group-flush">
-  <% @cart_items.each do |cart_item| %>
-    <li class="list-group-item"><%= cart_item.item.title %> -  x <%= cart_item.quantity %> - 
-    <%= remove_button(cart_item) %>
-    </li>
+    <% @cart_items.each do |cart_item| %>
+      <li class="list-group-item"><%= cart_item.item.title %> -  x <%= cart_item.quantity %> - 
+        <%= remove_button(cart_item) %>
+      </li>
     <% end %>
   </ul>
 
   <%= checkout_button %>
-</div>
+  </div>
