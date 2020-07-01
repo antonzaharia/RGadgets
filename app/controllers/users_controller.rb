@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-    before_action :require_login, :set_current_user
-    skip_before_action :require_login, only: [:new, :create]
+    before_action :user_authorized?, :set_current_user
+    skip_before_action :user_authorized?, only: [:new, :create]
     skip_before_action :set_current_user, only: [:new, :create]
-
+ 
     def show
     end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
             redirect_to edit_user_path(@user)
         end
     end
-
+    
     private
 
     def user_params

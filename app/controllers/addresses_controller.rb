@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
         if @address.save
             redirect_to user_path(@user)
         else
-            flash[:errors] = @address.errors.full_messages
+            set_errors
             redirect_to new_user_address_path(@user)
         end
     end
@@ -25,7 +25,7 @@ class AddressesController < ApplicationController
         if @address.update(address_params)
             redirect_to user_path(@user)
         else
-            flash[:errors] = @address.errors.full_messages
+            set_errors
             redirect_to edit_user_address_path(@user, @address)
         end
     end
@@ -33,6 +33,10 @@ class AddressesController < ApplicationController
     private
     def address_params
         params.require(:address).permit(:line_1, :line_2, :city, :postcode, :country)
+    end
+
+    def set_errors
+        flash[:errors] = @address.errors.full_messages
     end
 
     

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :destroy]
   end
 
-  resources :categories
+  resources :categories, only: [:index, :show]
   resources :items do
     resources :colors, :models, only: [:new, :create, :destroy]
   end
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :carts, only: [:index]
   end
   root 'statics#home'
+  get '/analytics', to: 'statics#analytics'
   post '/logout', to: 'sessions#destroy'
   
 end

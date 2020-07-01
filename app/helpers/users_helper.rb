@@ -17,4 +17,10 @@ module UsersHelper
         " - Logged in via GitHub"
       end
     end
+
+    def analytics_button(user)
+      if user.admin == 1
+        link_to "Analytics", analytics_path, :class => "btn btn-primary"
+      end
+    end
 end

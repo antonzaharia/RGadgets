@@ -26,12 +26,6 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    def require_login
-        if !logged_in?
-            redirect_to root_path, alert: "You must be logged in to access this path."
-        end
-    end
-
     def find_last_cart(user)
         if user.carts.empty?
             cart = user.carts.build

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card card-height">
   <h5 class="card-header">Your Details</h5>
     <div class="card-body">
     <h2 class="card-text">Name: <%= @user.name %></h2>
@@ -23,6 +23,7 @@
         <%= link_to "Edit Address", edit_user_address_path(@user, address), :class => "btn btn-primary"%>
       <% end %>
       <%= add_address_button(@user) %>
+      <%= analytics_button(@user) %>
   </div>
 </div>
 

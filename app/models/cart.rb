@@ -27,5 +27,9 @@ class Cart < ApplicationRecord
         updated_at.strftime("%d %b %y")
     end
 
+    def self.total_sales
+        completed.size + checked_out.size
+    end
+
     
 end

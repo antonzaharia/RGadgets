@@ -1,7 +1,11 @@
 module CartsHelper
     def checkout_button
         if @user.admin == 1
-            button_to "Mark as completed", cart_completed_path(@cart) , method: :patch, :class => "btn btn-success"
+            if @cart.status == "checked out"
+              button_to "Mark as completed", cart_completed_path(@cart) , method: :patch, :class => "btn btn-success"
+            else
+              content_tag(:p, "Order Completed", :class => "alert alert-dark")
+            end
         elsif @cart.status == "completed" || @cart.status == "checked out"
             content_tag(:p, "Order Cannot be mofified", :class => "alert alert-dark")
         elsif  @cart.cart_items.empty?

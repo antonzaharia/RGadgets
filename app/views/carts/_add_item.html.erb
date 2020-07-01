@@ -1,0 +1,11 @@
+<div class="card" style="width: 50%;">
+<%= form_for([@cart, @cart_item]) do |f| %>
+<%= f.collection_select :model_id, @item.models, :id, :name, {:prompt=>"Select Model"}, { :class => "custom-select my-1 mr-sm-2" } %>
+<%= f.collection_select :color_id, @item.colors, :id, :name, {:prompt=> "Select Color"}, { :class => "custom-select my-1 mr-sm-2" } %><br>
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.label :quantity, :class => "input-width" %>
+<%= f.number_field :quantity, value: 1, :class => "form-control input-width float-right" %> <br><br><br><br>
+<h2><span class="badge badge-secondary ">$ <%= @item.price %> </span></h2>
+<%= f.submit "Add to cart", :class => "btn btn-primary float-right" %>
+<% end %>
+</div>

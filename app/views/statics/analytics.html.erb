@@ -1,0 +1,14 @@
+<div class="card card-height" style="width: 100%;">
+  <div class="card-header center">
+    Analytics Panel
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Total Sales: <h1><span class="badge badge-primary float_right"><%= @total_sales %></span></h1></li>
+    <li class="list-group-item">Items Sold: <h1><span class="badge badge-primary float_right"><%= @items_sold %></span></h1></li>
+    <li class="list-group-item">Most Sold Items:
+      <% @most_sold.each do |item| %>
+        <span class="badge badge-primary float_right"> | <%= link_to item.title, item_path(item) %> - <%= item.number_of_sales %> </span>
+      <% end %>
+     </li>
+  </ul>
+</div>
