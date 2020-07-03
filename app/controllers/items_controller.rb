@@ -1,16 +1,17 @@
 class ItemsController < ApplicationController
     include ItemsHelper
-    before_action :is_admin?, :user_authorized?
+    before_action :is_admin?, :user_authorized?, :find_item
     skip_before_action :is_admin?, only: [:index, :show]
     skip_before_action :user_authorized?, only: [:index]
+    skip_before_action :find_item, only: [:index, :new, :create, ]
 
     def index
         flash[:notice] = nil
-        if params[:search]
-            @items = Item.where('title LIKE ?', "%#{params[:search]}%")
-            flash[:notice] = "No Results" if @items.size == 0
+        if params[:search] # Checking if user searched for something
+            @items = Item.search(params[:search]) # Using search class method to check the database
+            flash[:notice] = "No Results" if @items.size == 0 # flash notice for no results
           else
-            @items = Item.all
+            @items = Item.all # All items
         end
     end
     
@@ -20,38 +21,34 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.new(item_params)
-        @item.category = find_category
+        set_category_from_params
         if @item.save
             redirect_to new_item_model_path(@item)
         else
-            flash[:errors] = @item.errors.full_messages
+            set_errors
             redirect_to new_item_path
         end
     end
 
     def edit
-        @item = Item.find_by(id: params[:id])
     end
 
     def update
-        @item = Item.find_by(id: params[:id])
-        @item.category = find_category
+        set_category_from_params
         if @item.update(item_params)
             redirect_to new_item_model_path(@item)
         else
-            flash[:errors] = @item.errors.full_messages
+            set_errors
             redirect_to edit_item_path(@item)
         end
     end
 
     def show
-        @item = Item.find(params[:id])
         @cart = current_cart
         @cart_item = @item.cart_items.build
     end
 
     def destroy
-        @item = Item.find(params[:id])
         @item.delete
         redirect_to items_path
     end
@@ -60,6 +57,10 @@ class ItemsController < ApplicationController
 
     def item_params
         params.require(:item).permit(:title, :image, :description, :price)
+    end
+
+    def find_item
+        @item = Item.find_by(id: params[:id])
     end
 
 

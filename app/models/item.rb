@@ -27,4 +27,9 @@ class Item < ApplicationRecord
         end
         number
     end
+
+    def self.search(term)
+        where('title LIKE ?', "%#{term}%")
+    end
+
 end

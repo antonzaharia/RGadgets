@@ -5,11 +5,10 @@
     <span class="badge badge-secondary"><%= via_github(@user) %></span>
     <h2 class="card-text">Email: <%= @user.email %></h2>
     <p><%= link_to "Edit Your Details", edit_user_path(@user), :class => "btn btn-primary" %></p>
-    <p><%= order_history_button %></p>
+    <p><%= order_history_button if !@user.user_carts.empty?%></p>
     <p><%= new_item_button(@user) %></p>
   </div>
 </div>
-
 
 <div class="card">
   <h5 class="card-header">Your Address</h5>

@@ -1,9 +1,11 @@
 class User < ApplicationRecord
+    scope :customers, -> { where admin: 0 }
     has_secure_password
     has_many :carts
     has_many :address
     validates :name, presence: true
     validates :email, presence: true
+    validates :email, uniqueness: true
     validates :presence, presence: true
 
     def user_carts
@@ -23,6 +25,18 @@ class User < ApplicationRecord
              user.password = auth['info']['email'] || "BasicPassword"
           end
         end
+    end
+
+    def self.user_count
+        customers.size
+    end
+
+    def self.top_three_customers
+        customers.order(:carts.size).limit(3)
+    end
+
+    def admin?
+        admin == 1
     end
 
 

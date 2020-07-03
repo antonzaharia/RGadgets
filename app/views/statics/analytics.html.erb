@@ -9,6 +9,12 @@
       <% @most_sold.each do |item| %>
         <span class="badge badge-primary float_right"> | <%= link_to item.title, item_path(item) %> - <%= item.number_of_sales %> </span>
       <% end %>
-     </li>
+    </li>
+    <li class="list-group-item">Customers: <h1><span class="badge badge-primary float_right"><%= @user_count %></span></h1></li>
+    <li class="list-group-item">Top 3 Customers:
+      <% @top_three.each do |customer| %>
+        <span class="badge badge-primary float_right"> | <%= link_to customer.name, user_path(customer) %> - <%= customer.carts.size %> </span>
+      <% end %>
+    </li>
   </ul>
 </div>

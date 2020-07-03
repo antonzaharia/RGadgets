@@ -35,9 +35,4 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 
-  def session_start(user)
-    session[:user_id] = user.id
-    session[:cart_id] = find_last_cart(user)
-    redirect_to user_path(user)
-  end
 end

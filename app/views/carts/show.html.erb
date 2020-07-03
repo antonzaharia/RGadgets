@@ -1,11 +1,13 @@
-<div class="card card-height" style="width: 100%;">
   <div class="card-header">
-    Total: $<%= @cart.total %>
+    Total: $ <%= @cart.total %>
   </div>
 
   <ul class="list-group list-group-flush">
     <% @cart_items.each do |cart_item| %>
-      <li class="list-group-item"><%= cart_item.item.title %> - <span class="badge badge-secondary"> x <%= cart_item.quantity %></span> - 
+      <li class="list-group-item"><%= cart_item.item.title %>
+       - <span class="badge badge-secondary">Color: <%= cart_item.color.name %></span>
+       - <span class="badge badge-secondary">Model: <%= cart_item.model.name %></span>
+       - <span class="badge badge-secondary"> x <%= cart_item.quantity %></span> - 
         <%= remove_button(cart_item) %>
       </li>
     <% end %>

@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
     def show
         @cart = Cart.find(params[:id])
-        @cart_items = CartItem.where(cart_id: @cart.id).all
+        @cart_items = @cart.cart_items
     end
 
     def update
