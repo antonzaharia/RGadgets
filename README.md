@@ -36,12 +36,12 @@ In your terminal, type 'rake db:seed' to fill up the database with 3 user accoun
 
 Login as a User using any of the accounts:
 
-email: "toni@example.com", password:"toni"
-email: "test@example.com", password:"test"
-email: "user@example.com", password:"user"
+# email: "toni@example.com", password:"toni"
+# email: "test@example.com", password:"test"
+# email: "user@example.com", password:"user"
 
 or as admin:
-email: "admin@admin.com", password:"admin"
+# email: "admin@admin.com", password:"admin"
 
 Firstly login of signup as a User and create a new order(add at least one item in the cart and check it out). Log in as admin and see the new order in the "See All Orders" section. As an admin you have the option to edit any of the products listed on the website.
 
