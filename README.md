@@ -49,7 +49,7 @@ Firstly login of signup as a User and create a new order(add at least one item i
 After checking out the repo, run bundle install to install dependencies.
 
 Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/antonzaharia/Food-Order. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the (https://github.com/antonzaharia/Food-Order/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/antonzaharia/RGadgets. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the (https://github.com/antonzaharia/RGadgets/CODE_OF_CONDUCT.md).
 
 # License
 The gem is available as open source under the terms of the MIT License.
