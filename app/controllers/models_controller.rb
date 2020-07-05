@@ -6,7 +6,8 @@ class ModelsController < ApplicationController
     end
 
     def create
-        @model = @item.models.build(model_params)
+        @model = @item.models.find_or_create_by(name: model_params[:name])
+        @model.cart = current_cart
         if @model.save
             redirect_to new_item_model_path(@item)
         else
@@ -23,7 +24,7 @@ class ModelsController < ApplicationController
 
     private
     def model_params
-        params.require(:model).permit(:name)
+        params.require(:model).permit(:name, :cart_id)
     end
 
 end

@@ -1,9 +1,11 @@
 module UsersHelper
 
   # Showing New Address Button if user has no address
-    def add_address_button(user)
+    def add_address_button(user, address)
       if user.address.empty?
         link_to "Add Address", new_user_address_path(user), :class => "btn btn-primary" 
+      else
+        link_to "View Address", user_address_path(user, address), :class => "btn btn-primary" 
       end
     end
 

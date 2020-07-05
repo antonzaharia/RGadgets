@@ -63,5 +63,9 @@ class ItemsController < ApplicationController
         @item = Item.find_by(id: params[:id])
     end
 
+    # Selecting existing category or creating new one
+    def set_category_from_params
+        @item.category = Category.find_category(params[:item][:category], params[:item][:category_id])
+    end
 
 end

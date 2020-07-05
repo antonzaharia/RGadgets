@@ -30,6 +30,10 @@ class AddressesController < ApplicationController
         end
     end
 
+    def show
+        @address = @user.address.find_by(id: params[:id]) 
+    end
+
     private
     def address_params
         params.require(:address).permit(:line_1, :line_2, :city, :postcode, :country)

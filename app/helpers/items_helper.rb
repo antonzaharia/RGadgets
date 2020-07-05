@@ -1,9 +1,6 @@
 module ItemsHelper
 
-    # Selecting existing category or creating new one
-    def set_category_from_params
-        @item.category = Category.find_category(params[:item][:category], params[:item][:category_id])
-    end
+
 
     # Showing the edit Item button if the user is admin
     def edit_button

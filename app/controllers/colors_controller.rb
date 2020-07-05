@@ -6,7 +6,8 @@ class ColorsController < ApplicationController
     end
 
     def create
-        @color = @item.colors.build(color_params)
+        @color = @item.colors.find_or_create_by(name: color_params[:name])
+        @color.cart = current_cart
         if @color.save
             redirect_to new_item_color_path(@item)
         else

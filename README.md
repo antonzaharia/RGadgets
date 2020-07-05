@@ -1,24 +1,58 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# RGadgets
+Welcome !
 
-* Ruby version
+This is a web app created in Rails that simulates a website for an online store.
 
-* System dependencies
+# Overview
+This web app has two interfaces:
 
-* Configuration
+A Customer Interface: login, logout, create new item,edit item , delete item, mark orders as completed, see all checked out carts and analytics page.
 
-* Database creation
+and
+A User Interface: login, signup, signup via GitHub, logout, add address, edit address, edit details(email and name), orders history, add new item to cart, remove item from cart, checkout cart.
 
-* Database initialization
+# Installation
+Clone this repository
 
-* How to run the test suite
+In your terminal, run 'bundle install' to install all required gems.
+In your terminal, type 'rake db:seed' to fill up the database with 3 user accounts and 8 products.
+How to run the program
+In your terminal, type 'rails s' to start the server.
+In your browser, visit: http://localhost:3000 to visit the homepage.
+Files information
+'/db/migrate' has all the migrations files
+'/config' has the setup environment
+'/app' has the actual code files where all the work is done.
+'/app/controllers' has the controllers files
+'/app/models' has the ruby models
+'/app/views' has the .erb files to be rendered
+Gemfile has all the required gems to run this project
 
-* Services (job queues, cache servers, search engines, etc.)
+# Usage
+In your terminal, type 'rake db:seed' to fill up the database with 3 user accounts and 8 products. In your terminal, type 'rails s' to start the server. In your browser, visit: http://localhost:3000/ to visit the homepage.
 
-* Deployment instructions
+Login as a User using any of the accounts:
 
-* ...
+email: "toni@example.com", password:"toni"
+email: "test@example.com", password:"test"
+email: "user@example.com", password:"user"
+
+or as admin:
+email: "admin@admin.com", password:"admin"
+
+Firstly login of signup as a User and create a new order(add at least one item in the cart and check it out). Log in as admin and see the new order in the "See All Orders" section. As an admin you have the option to edit any of the products listed on the website.
+
+# Development
+After checking out the repo, run bundle install to install dependencies.
+
+Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/antonzaharia/Food-Order. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the (https://github.com/antonzaharia/Food-Order/blob/master/CODE_OF_CONDUCT.md).
+
+# License
+The gem is available as open source under the terms of the MIT License.
+
+# Code of Conduct
+Everyone interacting in the Food Order project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
