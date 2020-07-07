@@ -5,7 +5,9 @@ class Item < ApplicationRecord
     has_many :models
     has_many :colors
     has_many :cart_items
+    has_many :reviews
     has_many :carts, through: :cart_items
+    has_many :users, through: :reviews
 
     validates :title, presence: true
     validates :image, presence: true
@@ -30,6 +32,16 @@ class Item < ApplicationRecord
 
     def self.search(term)
         where('title LIKE ?', "%#{term}%")
+    end
+
+    def reviews_number
+        reviews.size - 1
+    end
+
+    def average
+        if reviews_number >= 1
+            reviews.pluck(:stars).sum / reviews_number
+        end
     end
 
 end

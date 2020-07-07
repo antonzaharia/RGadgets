@@ -1,7 +1,5 @@
 module ItemsHelper
 
-
-
     # Showing the edit Item button if the user is admin
     def edit_button
         if is_admin?
@@ -19,6 +17,15 @@ module ItemsHelper
     # Set flash errors the items errors
     def set_errors
         flash[:errors] = @item.errors.full_messages
+    end
+
+    # Show item reviews
+    def show_reviews
+        if @item.reviews_number == 0
+            "No Reviews. Be the first who write one."
+        else
+            @item.average.to_s + " stars - Reviewd by " + @item.reviews_number.to_s + " customers"
+        end
     end
 
     # def find_model

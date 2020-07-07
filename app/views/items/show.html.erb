@@ -12,6 +12,11 @@
 <p class="center"> Category: <%= link_to @item.category.name, category_path(@item.category), :class => "badge badge-info" %></p>
 
 <div class="card card-height" style="width: 100%;">
+<h1 class="badge badge-primary"><%= show_reviews %></h1>
 <p><%= @item.description %></p>
 </div>
 
+<div class="card card-height" style="width: 100%;">
+<%= render :partial => "/reviews/review_form", :locals => { :item => @item, :review => @review, :stars_collection => @stars_collection } %>
+
+</div>

@@ -46,6 +46,9 @@ class ItemsController < ApplicationController
     def show
         @cart = current_cart
         @cart_item = @item.cart_items.build
+        @review = @item.reviews.build
+        @review.stars = 5
+        @stars_collection = (1..5)
     end
 
     def destroy

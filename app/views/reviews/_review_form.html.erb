@@ -1,0 +1,5 @@
+<%= form_for [@item, @review] do |f| %>
+<%= f.label :stars %>
+<%= f.select :stars, @stars_collection, :class => "form-control" %>
+<%= f.submit "Leave a review", :class => "btn btn-primary"  %>
+<% end %>

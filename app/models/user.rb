@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_secure_password
     has_many :carts
     has_many :address
+    has_many :reviews
+    has_many :items, through: :reviews
     validates :name, presence: true
     validates :email, presence: true
     validates :email, uniqueness: true
