@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       @user = User.where(:uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
       session_start(@user)
     else
-      @user = User.find_by(email: params[:user][:email])
+      @user = User.find_by(email: signin_params[:email])
       if @user && @user.authenticate(signin_params[:password])
         session_start(@user)
       else
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   private
 
   def signin_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:email, :password)
   end
 
   def auth

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         if @user.save
             session_start(@user)
         else 
-            set_flash_errors
+            set_errors
             render new_user_path
         end
     end
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
         if @user.update(edit_params)
             redirect_to user_path(@user)
         else
-            set_flash_errors
-            redirect_to edit_user_path(@user)
+            set_errors
+            render :edit
         end
     end
     

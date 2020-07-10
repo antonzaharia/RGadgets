@@ -47,6 +47,11 @@ class ApplicationController < ActionController::Base
         flash[:errors] = @user.errors.full_messages
     end
 
+    # Sets the errors of the user instance
+    def set_errors
+        @errors = @user.errors.full_messages
+    end
+
     # Finding the user based on session hash
     def set_current_user
         @user = User.find(current_user)

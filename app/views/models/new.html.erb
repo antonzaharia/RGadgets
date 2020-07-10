@@ -9,10 +9,11 @@
   </ul>
 </div>
 
-<%= display_errors %>
+
 
 <%= form_for ([@item, @model]) do |f| %>
 <%= f.text_field :name, :placeholder => "Enter model", :class => "form-control" %>
 <%= f.submit "Add model", :class => "btn btn-primary" %>
 <% end %>
+<%= display_errors %>
 <%= link_to "Continue to colors", new_item_color_path(@item), :class => "btn btn-success float-right" %>

@@ -2,17 +2,17 @@
 
 <%= form_for @user do |f| %>
 
-<%= f.label :name %>
+<%= f.label "Full Name" %>
 <small id="emailHelp" class="form-text text-muted">Your name is needed for your receipts.</small>
 <%= f.text_field :name, :class => "form-control" %> <br>
 
-<%= f.label :email %>
+<%= f.label "Your email" %>
 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 <%= f.email_field :email, :class => "form-control" %><br> 
 
 
-<%= f.label :password %>
-<small id="emailHelp" class="form-text text-muted">Choose strong password.</small>
+<%= f.label "Your password" %>
+<small id="emailHelp" class="form-text text-muted">Choose a strong password.</small>
 <%= f.password_field :password, :class => "form-control" %><br>
 
 <%= f.submit "Signup", :class => "btn btn-primary float_right" %>

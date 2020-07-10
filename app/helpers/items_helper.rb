@@ -16,7 +16,7 @@ module ItemsHelper
 
     # Set flash errors the items errors
     def set_errors
-        flash[:errors] = @item.errors.full_messages
+        @errors = @item.errors.full_messages
     end
 
     # Show item reviews

@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
             redirect_to new_item_model_path(@item)
         else
             set_errors
-            redirect_to new_item_path
+            render new_item_path
         end
     end
 
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
             redirect_to new_item_model_path(@item)
         else
             set_errors
-            redirect_to edit_item_path(@item)
+            render :edit
         end
     end
 

@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
             redirect_to user_path(@user)
         else
             set_errors
-            redirect_to new_user_address_path(@user)
+            render :new
         end
     end
 
@@ -25,7 +25,7 @@ class AddressesController < ApplicationController
             redirect_to user_path(@user)
         else
             set_errors
-            redirect_to edit_user_address_path(@user, @address)
+            render :edit
         end
     end
 
@@ -39,7 +39,7 @@ class AddressesController < ApplicationController
     end
 
     def set_errors
-        flash[:errors] = @address.errors.full_messages
+        @errors = @address.errors.full_messages
     end
 
     

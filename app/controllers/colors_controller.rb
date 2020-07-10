@@ -2,17 +2,16 @@ class ColorsController < ApplicationController
     before_action :is_admin?, :set_item
 
     def new
-        @color = @item.colors.build
+        @color = Color.new
     end
 
     def create
         @color = @item.colors.find_or_create_by(name: color_params[:name])
-        @color.cart = current_cart
         if @color.save
             redirect_to new_item_color_path(@item)
         else
-            flash[:errors] = @color.errors.full_messages
-            redirect_to new_item_color_path(@item)
+            @errors = @color.errors.full_messages
+            render :new
         end
     end
 

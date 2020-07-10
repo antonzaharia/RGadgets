@@ -5,9 +5,17 @@ module ApplicationHelper
         User.find(current_user).admin == 1
     end
 
+    # Showing flash errors
+    def display_flash_errors
+        if flash[:errors]
+            @errors = flash[:errors]
+           render partial: 'layouts/error', :locals => { :errors => @errors }
+        end
+    end
+
     # Showing errors
     def display_errors
-        if flash[:errors]
+        if @errors
            render partial: 'layouts/error'
         end
     end
