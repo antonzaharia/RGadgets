@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-    before_action :user_authorized?, :set_current_user
+    before_action :user_authorized?, :set_current_user, :logged_in_user
+
+    skip_before_action :logged_in_user, only: [:new, :create]
     skip_before_action :user_authorized?, only: [:new, :create]
     skip_before_action :set_current_user, only: [:new, :create]
  
     def show
+        @user = User.find(params[:id])
     end
 
     def edit
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def edit_params

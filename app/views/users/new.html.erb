@@ -15,6 +15,10 @@
 <small id="emailHelp" class="form-text text-muted">Choose a strong password.</small>
 <%= f.password_field :password, :class => "form-control" %><br>
 
+<%= f.label "Password Confirmation" %>
+<small id="emailHelp" class="form-text text-muted">Retype your password.</small>
+<%= f.password_field :password_confirmation, :class => "form-control" %><br>
+
 <%= f.submit "Signup", :class => "btn btn-primary float_right" %>
  <% end %>
 

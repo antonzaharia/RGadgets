@@ -27,4 +27,5 @@ module UsersHelper
         link_to "Analytics", analytics_path, :class => "btn btn-primary"
       end
     end
+
 end

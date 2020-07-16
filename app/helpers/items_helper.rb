@@ -27,6 +27,7 @@ module ItemsHelper
             @item.average.to_s + " stars - Reviewd by " + @item.reviews_number.to_s + " customers"
         end
     end
+    
 
     # def find_model
     #     if params[:item][:model] == ""

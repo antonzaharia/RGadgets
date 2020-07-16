@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-    before_action :set_current_user
+    before_action :set_current_user, :show_user_cart
+    skip_before_action :show_user_cart, only: [:update, :index, :completed]
 
     def show
         @cart = Cart.find(params[:id])

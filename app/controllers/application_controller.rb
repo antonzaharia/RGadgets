@@ -14,6 +14,21 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    # Checking if current user is the logged in user
+    def logged_in_user
+        if User.find(params[:id]).id != current_user
+         redirect_to user_path(current_user)
+        end
+    end
+
+    # Redirecting to current user cart path if cart doesn't belong to user
+    def show_user_cart
+        if Cart.find(params[:id]).user != set_current_user && set_current_user.admin != 1
+            flash[:notice] = "You are not allowed to view that cart."
+            redirect_to cart_path(set_current_user.carts.last)
+        end
+    end
+
     # Redirecting to root path if the user is not admin
     def is_admin?
         if current_user && set_current_user.admin != 1

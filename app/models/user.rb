@@ -9,6 +9,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :email, uniqueness: true
     validates :presence, presence: true
+    validates :password, confirmation: { case_sensitive: true }
 
     def user_carts
         if admin == 1

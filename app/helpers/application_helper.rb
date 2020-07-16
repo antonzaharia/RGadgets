@@ -1,5 +1,4 @@
 module ApplicationHelper
-
     # Checking if current user is admin 
     def is_admin?
         User.find(current_user).admin == 1
@@ -73,6 +72,8 @@ module ApplicationHelper
             link_to "Orders History", user_carts_path(@user), :class => "btn btn-primary"
         end
     end
+
+
 
 
 end
